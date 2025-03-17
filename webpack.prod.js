@@ -1,5 +1,6 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
 	mode: 'production',
@@ -25,6 +26,7 @@ module.exports = {
 		extensions: ['.tsx', '.ts', '.js'],
 	},
 	output: {
+		//filename: '[contenthash].bundle.js',
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'dist'),
 		publicPath: '/',
@@ -33,5 +35,7 @@ module.exports = {
 		new HTMLWebpackPlugin({
 			template: './src/index.html',
 		}),
+
+		new CleanWebpackPlugin(),
 	],
 };
